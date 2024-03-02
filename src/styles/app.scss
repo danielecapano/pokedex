@@ -1,0 +1,58 @@
+@use './partials/variables'as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: $yellow;
+}
+
+
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.m-0 {
+    margin-inline: 0;
+}
+
+.relative {
+    position: relative;
+}
+
+.container {
+    width: min(calc(700px + 4rem), calc(100% - 2rem));
+    margin-inline: auto;
+}
