@@ -67,7 +67,7 @@
     
     .cards {
         overflow-y: auto;
-        height: calc(100% - 3.5rem);
+        height: 467px;
         &::-webkit-scrollbar {
     width: 0;
 
