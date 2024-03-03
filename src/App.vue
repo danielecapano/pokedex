@@ -44,7 +44,6 @@ export default {
       url: 'https://pokeapi.co/api/v2/pokemon/',
       pokemon: {},
       myPokemons: [],
-      newArray: [],
       namePokemon: '',
       isContent: false,
       show: false
@@ -84,6 +83,7 @@ export default {
           stats: stats,
         };
         this.pokemon = newData;
+        this.myPokemons = [];
         console.log(Array.isArray(this.myPokemons));
         this.iscontentOnArray(this.pokemon, this.myPokemons)
 
