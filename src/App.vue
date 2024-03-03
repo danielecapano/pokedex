@@ -83,7 +83,7 @@ export default {
           stats: stats,
         };
         this.pokemon = newData;
-        if(this.myPokemons.lenght === 0){
+        if(this.myPokemons.length === 0){
           this.myPokemons = [];
         }
         console.log(Array.isArray(this.myPokemons));
