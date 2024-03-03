@@ -24,12 +24,18 @@ header {
 }
 .logo {
     max-width: 50%;
+    @media (min-width: 768px) {
+        margin-inline: auto;
+    }
 }
 .arrow {
     max-width: 20px;
     transition: $transition;
     &.active {
         transform: rotate(180deg);
+    }
+    @media (min-width: 768px) {
+        display: none;
     }
 }
 

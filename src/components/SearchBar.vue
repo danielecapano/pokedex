@@ -1,11 +1,22 @@
 <template>
     <section class="search">
         <div class="container relative">
+           
             <div class="search-wrapper">
                 <input
                 :value="modelValue"
-                @input="$emit('update:modelValue', $event.target.value)"
+                @input="$emit('update:modelValue', $event.target.value,)"
+                @keyup.enter="$emit('searchPokemon')"
+                @focus="$emit('showSuggestions')"
+               
+                
               />
+              
+                <ul v-if="this.showSuggestions" >
+                <li v-for="option in filteredOptions" :key="option" @click="$emit('selectedPokemon', option)">
+                    {{ option }}
+                </li>
+                </ul>
                 <button @click="$emit('searchPokemon')">
                     <img src="../assets/search.svg" alt="">
                 </button>
@@ -20,13 +31,31 @@
 
 <script>
     export default {
-        props: ['modelValue', 'pokemon', 'isContent'],
-        emits: ['update:modelValue', 'searchPokemon', 'addMyPokemon', 'relMyPokemon', 'isShow'],
-        // methods: {
-        //     iscontent(object, arrayOfObject) {
-        //         const result = arrayOfObject.find(obj => obj.id === object.id)
-        //     }
-        // }
+        props: ['modelValue', 'pokemon', 'isContent', 'options', 'showSuggestions'],
+        emits: ['update:modelValue', 'searchPokemon', 'addMyPokemon', 'relMyPokemon', 'isShow', 'hideSuggestions', 'showSuggestions', 'selectedPokemon'],
+        data() {
+            return {
+                selected: '',
+            }
+        },
+        methods: {
+            
+     
+            selectedPokemon() {
+               
+                console.log('ciao');
+            }
+        },
+
+        computed: {
+            filteredOptions() {
+            return this.options.filter(option =>
+                option.includes(this.modelValue)
+            );
+     
+            }
+        },
+
        
     }
 </script>
@@ -39,7 +68,10 @@
     .search-wrapper {
         position: relative;
         width: fit-content;
-        // margin-inline: auto;
+        @media (min-width: 768px) {
+            margin-inline: auto;
+
+        }
         input {
             width: 250px;
             border: 1px solid $grey;
@@ -49,6 +81,10 @@
             border-radius: 5rem;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             transition: $transition;
+            @media (min-width: 768px) {
+                padding: 1rem;
+                width: 300px;
+            }
             &:focus {
                 border: 1px solid $blue;
             }
@@ -89,11 +125,41 @@
             border-radius: 3rem;
             transition: $transition;
             cursor: pointer;
+            @media (min-width: 768px) {
+                padding-block: 1rem;
+                width: 100px;
+            }
             &:hover {
                 background-color: $blue;
             }
         }
     }
+}
+ul {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: $white;
+    z-index: 100;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+}
+}
+
+li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #f0f0f0;
 }
 
 </style>

@@ -180,20 +180,22 @@
 <style lang="scss" scoped>
 @use '../styles/partials/variables' as *;
 
-// .details {
-//     padding-block: 3rem;
-//     .wrapper {
-        // background-color: $yellow;
-        // border: 5px solid $blue;
-        // border-radius: 2rem;
-        // padding: 2rem;
+.details {
+    width: min(360px, 100%);
+    place-items: center;
+    padding-bottom: 2rem;
+    // overflow: auto;
+}
+    
         .card {
-            width: min(350px, 100%);
+            width: min(360px, 100%);
+            height: 600px;
             background-color: $light-blue;
-            outline: 0.5rem solid #FFF;
+            border: 0.5rem solid #FFF;
             padding: 0.25rem;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            // overflow: auto;
             .card-title {
                 position: relative;
                 height: 150px;
