@@ -6,7 +6,14 @@
         @searchPokemon="fetchPokemon"
         @addMyPokemon="capturePokemon"
         @relMyPokemon="releasePokemon"
+        @showSuggestions="myShowSuggestions"
+        @hideSuggestions="hideSuggestions"
+        @selectedPokemon="selectedOption"
+       
+
         :pokemon="pokemon"
+        :options="pokemonList"
+        :showSuggestions="showSuggestions"
         :isContent="isContent"
         />
         <section class="details">
@@ -44,11 +51,15 @@ export default {
       url: 'https://pokeapi.co/api/v2/pokemon/',
       pokemon: {},
       myPokemons: [],
+      pokemonList: [],
+      showSuggestions: false,
       namePokemon: '',
       isContent: false,
       show: false
     }
   },
+ 
+  
   methods: {
     fetchPokemon() {
       fetch(this.url + this.search.toLowerCase())
@@ -140,15 +151,43 @@ export default {
     },
     isShow() {
         this.show = !this.show;
-    }
+    },
+    fetchListPokemon() {
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        this.pokemonList = data.results.map(el => el.name);
+        // console.log(this.pokemonList);
+      })
+    },
+    myShowSuggestions() {
+      this.showSuggestions = true;
+    },
+    hideSuggestions() {
+      this.showSuggestions = false;
+    },
+    selectedOption(option) {
+     
+      this.search = option;
+      console.log('Hai selezionato: ciao');
+      this.hideSuggestions();
 
   },
+  // selectedOption: (option) => {
+  //   console.log('Option selected in parent:', option);
+  //   this.search = option;
+  //   this.hideSuggestions();
+  // }
+},
  
   mounted() {
-    this.getMyPokemons()
+    this.getMyPokemons();
     // this.myPokemons = JSON.parse(localStorage.getItem("myPokemons"));
-    console.log(this.pokemon);
-    this.iscontentOnArray(this.pokemon, this.myPokemons)
+    // console.log(this.pokemon);
+    this.iscontentOnArray(this.pokemon, this.myPokemons);
+    this.fetchListPokemon();
   }
   
 }
@@ -158,14 +197,23 @@ export default {
 
 @use './styles/app.scss';
 
-
+main {
+  overflow: hidden;
+}
 
 .grid {
   position: relative;
   display: grid;
   width: min(calc(700px + 4rem), 100%);
+  height: calc(600px + 2rem);
   margin-inline: auto;
-  // grid-template-columns: repeat(2, minmax(350px, 1fr));
+  place-items: start center;
+  padding-bottom: 2rem;
+  // overflow: auto;
+ 
   gap: 2rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(350px, 1fr));
+  }
 }
 </style>
