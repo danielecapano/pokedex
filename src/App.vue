@@ -83,7 +83,9 @@ export default {
           stats: stats,
         };
         this.pokemon = newData;
-        this.myPokemons = [];
+        if(this.myPokemons.lenght === 0){
+          this.myPokemons = [];
+        }
         console.log(Array.isArray(this.myPokemons));
         this.iscontentOnArray(this.pokemon, this.myPokemons)
 
@@ -106,11 +108,14 @@ export default {
       this.isShow();
     },
     getMyPokemons() {
-      this.myPokemons = JSON.parse(localStorage.getItem("myPokemons"));
+      if(this.myPokemons.length > 0){
+
+        this.myPokemons = JSON.parse(localStorage.getItem("myPokemons"));
+      }
     },
     capturePokemon(){
       this.getMyPokemons()
-      if (this.pokemon && Array.isArray(this.myPokemons)){
+      // if (this.pokemon && Array.isArray(this.myPokemons)){
 
         this.myPokemons.push(this.pokemon);
         
@@ -118,7 +123,7 @@ export default {
         localStorage.setItem("myPokemons", JSON.stringify(this.myPokemons));
         this.iscontentOnArray(this.pokemon, this.myPokemons);
         this.isShow();
-      }
+      // }
       
     },
     releasePokemon() {
