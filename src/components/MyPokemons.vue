@@ -32,10 +32,13 @@
 @use '../styles/partials/variables' as *;
 .my-pokemons {
     display: grid;
-    place-items: center;
+    place-items: start center;
     position: absolute;
-    height: 100%;
+    height: calc(100% - 2rem);
     padding-bottom: 2rem;
+    @media (min-width: 768px){
+        height: 100%;
+    }
     
     
     inset: 0;
@@ -58,7 +61,7 @@
     border: 0.5rem solid #FFF;
     padding: 0.25rem;
     border-radius: 1.5rem;
-    height: 600px;
+    height: 100%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     
     

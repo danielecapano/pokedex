@@ -50,7 +50,7 @@
         computed: {
             filteredOptions() {
             return this.options.filter(option =>
-                option.includes(this.modelValue)
+                option.includes(this.modelValue.toLowerCase())
             );
      
             }

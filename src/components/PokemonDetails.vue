@@ -189,7 +189,7 @@
     
         .card {
             width: min(360px, 100%);
-            height: 600px;
+            // height: 550px;
             background-color: $light-blue;
             border: 0.5rem solid #FFF;
             padding: 0.25rem;
@@ -225,13 +225,13 @@
                 background-color: $white;
                 // margin: 0.25rem;
                 border-radius: 0.75rem;
-                padding:4rem 1rem 1rem;
+                padding:3.5rem 1rem 1rem;
                 .type {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     gap: 1rem;
-                    margin-bottom: 1.5rem;
+                    margin-bottom: 1rem;
                     span {
                         display: block;
                         padding: 0.25rem 0.5rem;
@@ -247,14 +247,14 @@
                     text-align: center;
                     font-weight: 700;
                     color: $light-blue;
-                    margin-bottom: 1rem;
+                    margin-bottom: 0.5rem;
                 }
                 .about {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     gap: 3rem;
-                    margin-bottom: 2rem;
+                    margin-bottom: 1rem;
                     .about-info {
                         display: flex;
                         flex-direction: column;

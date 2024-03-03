@@ -158,7 +158,7 @@ export default {
         return res.json();
       })
       .then(data => {
-        this.pokemonList = data.results.map(el => el.name);
+        this.pokemonList = data.results.map(el => el.name).sort();
         // console.log(this.pokemonList);
       })
     },
@@ -204,8 +204,8 @@ main {
 .grid {
   position: relative;
   display: grid;
-  width: min(calc(700px + 4rem), 100%);
-  height: calc(600px + 2rem);
+  width: min(calc(720px + 4rem), 100%);
+  // height: calc(550px + 2rem);
   margin-inline: auto;
   place-items: start center;
   padding-bottom: 2rem;
