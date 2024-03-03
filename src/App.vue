@@ -108,7 +108,7 @@ export default {
       this.isShow();
     },
     getMyPokemons() {
-      if(JSON.parse(localStorage.getItem("myPokemons")).length > 0){
+      if(JSON.parse(localStorage.getItem("myPokemons"))){
 
         this.myPokemons = JSON.parse(localStorage.getItem("myPokemons"));
       }
